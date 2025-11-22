@@ -16,12 +16,12 @@ import concurrent.futures
 
 DOMAIN = "http://localhost:1323"
 idFolder = "15042eba-b82b-4a71-9565-dce4148cff81"
-
+API_PROXY="9QJEB6gvb2d8D9PmYXun"
 # =============================================
 # HÀM LẤY PROXY TỪ API
 # =============================================
 
-def get_proxy_from_api(api_url="https://api.proxyxoay.org//api/key_xoay.php?key=9QJEB6gvb2d8D9PmYXun"):
+def get_proxy_from_api(api_url="https://api.proxyxoay.org//api/key_xoay.php?key="+API_PROXY):
     """
     Lấy proxy từ API proxyxoay.org
     Returns:
@@ -95,7 +95,7 @@ def format_proxy_for_orbita(proxy_data, proxy_type="http"):
         print(f"❌ Lỗi khi định dạng proxy: {e}")
         return None
 
-def get_and_format_proxy(api_url="https://api.proxyxoay.org//api/key_xoay.php?key=9QJEB6gvb2d8D9PmYXun", proxy_type="http"):
+def get_and_format_proxy(api_url="https://api.proxyxoay.org//api/key_xoay.php?key="+API_PROXY, proxy_type="http"):
     """
     Lấy và định dạng proxy từ API
     Args:
