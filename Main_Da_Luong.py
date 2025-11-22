@@ -196,7 +196,8 @@ def closeProfile(id):
 def connect_selenium_to_orbita(debugPort):
     chrome_options = Options()
     chrome_options.add_experimental_option("debuggerAddress", f"127.0.0.1:{debugPort}")
-    driver = webdriver.Chrome(options=chrome_options)
+    service = Service("./chromedriver.exe")  # Thay đổi đường dẫn
+    driver = webdriver.Chrome(options=chrome_options,service=service)
     return driver
 
 def wait_for_extension_completion(driver, timeout=120):
