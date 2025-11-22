@@ -7,6 +7,7 @@ async function clickMatchingLink() {
     
     if (!targetUrl) {
       console.error('Không tìm thấy targetUrl trong storage');
+      await sendResultToBackground(null);
       return;
     }
 
@@ -17,10 +18,31 @@ async function clickMatchingLink() {
     
     if (!found) {
       console.log('❌ Không tìm thấy link phù hợp sau 3 trang tìm kiếm');
+      await sendResultToBackground(null);
     }
     
   } catch (error) {
     console.error('Lỗi khi click link:', error);
+    await sendResultToBackground(null);
+  }
+}
+
+// Hàm gửi kết quả về background script
+async function sendResultToBackground(kmCode) {
+  try {
+    console.log('📤 Gửi kết quả về background:', kmCode);
+    
+    await chrome.runtime.sendMessage({
+      action: "searchCompleted",
+      kmCode: kmCode,
+      found: kmCode !== null
+    });
+    
+    // Xóa dữ liệu tạm thời
+    await chrome.storage.local.remove(['targetUrl']);
+    
+  } catch (error) {
+    console.error('Lỗi khi gửi kết quả:', error);
   }
 }
 
@@ -55,14 +77,18 @@ async function findAndClickMatchingLink(targetUrl) {
       if (isMatchingLink(href, targetUrl)) {
         foundLink = link;
         console.log('✅ Tìm thấy link phù hợp:', getHostname(href));
-        break;
+        
+        // Trích xuất kmCode từ URL nếu có
+        const kmCode = extractKmCode(href);
+        console.log('💰 KM Code:', kmCode);
+        
+        // Click vào link
+        foundLink.click();
+        
+        // Gửi kết quả thành công về background
+        await sendResultToBackground(kmCode);
+        return true;
       }
-    }
-    
-    if (foundLink) {
-      console.log('🎉 Click vào link phù hợp');
-      foundLink.click();
-      return true;
     }
     
     console.log(`❌ Không tìm thấy trên trang ${currentPage}`);
@@ -82,6 +108,24 @@ async function findAndClickMatchingLink(targetUrl) {
   }
   
   return false;
+}
+
+// Hàm trích xuất kmCode từ URL
+function extractKmCode(url) {
+  try {
+    const urlObj = new URL(url);
+    
+    // Tìm tham số kmCode trong URL
+    const kmCode = urlObj.searchParams.get('kmCode') || 
+                   urlObj.searchParams.get('code') || 
+                   urlObj.searchParams.get('promo') || 
+                   urlObj.searchParams.get('voucher');
+    
+    return kmCode;
+  } catch (error) {
+    console.error('Lỗi khi trích xuất kmCode:', error);
+    return null;
+  }
 }
 
 // Kiểm tra link có khớp với target URL không

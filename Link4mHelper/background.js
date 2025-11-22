@@ -15,6 +15,16 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     chrome.tabs.create({
       url: request.directLink
     });
+  } else if (request.action === "searchCompleted") {
+    // Xử lý kết quả tìm kiếm Google
+    console.log('🎊 Kết quả tìm kiếm Google:');
+    console.log('💰 KM Code:', request.kmCode);
+    console.log('✅ Tìm thấy:', request.found);
+    
+    if (!request.found) {
+      console.log('❌ Không tìm thấy kết quả phù hợp sau 3 trang');
+      // Có thể thêm xử lý thông báo hoặc ghi log ở đây
+    }
   }
   
   sendResponse({ received: true });
