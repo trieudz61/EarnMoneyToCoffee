@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Link4m Auto Search",
+  "version": "1.0",
+  "description": "Tự động lấy dữ liệu từ Link4m và tìm kiếm trên Google",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://link4m.com/*",
+    "https://www.google.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://link4m.com/*"],
+      "js": ["content.js"]
+    },
+    {
+      "matches": ["https://www.google.com/search*"],
+      "js": ["google-content.js"]
+    }
+  ]
+}

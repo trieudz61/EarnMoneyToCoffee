@@ -1,0 +1,226 @@
+/* styles.css - Compact Version */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #7f8c8d;
+  --success-color: #27ae60;
+  --success-color-dark: #219a52;
+  --success-bg: #d5f4e6;
+  --error-color: #e74c3c;
+  --error-bg: #fdeaea;
+  --processing-color: #856404;
+  --processing-bg: #fff3cd;
+  --waiting-color: #6c757d;
+  --waiting-bg: #f8f9fa;
+  --waiting-border: #e9ecef;
+  --light-gray-border: #dee2e6;
+}
+
+body {
+  width: 280px;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #333;
+  color: var(--primary-color);
+}
+
+.container {
+  padding: 0;
+}
+
+.header {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 12px 12px 8px 12px;
+  text-align: center;
+  border-radius: 0 0 12px 12px;
+  margin-bottom: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.header h3 {
+  margin: 0 0 3px 0;
+  color: #2c3e50;
+  color: var(--primary-color);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 10px;
+  color: #7f8c8d;
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+
+.section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  padding: 10px;
+  margin: 6px 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.result-section {
+  margin-bottom: 12px;
+}
+
+h4 {
+  margin: 0 0 8px 0;
+  color: #2c3e50;
+  color: var(--primary-color);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.btn {
+  padding: 10px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 12px;
+  transition: all 0.2s ease;
+  width: 100%;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+}
+
+.btn.primary:hover {
+  background: linear-gradient(135deg, #4aa3df, #3498db);
+}
+
+.btn.success {
+  background: linear-gradient(135deg, #27ae60, #219a52);
+  background: linear-gradient(135deg, var(--success-color), var(--success-color-dark));
+  color: white;
+}
+
+.btn.success:hover {
+  background: linear-gradient(135deg, #2ccf70, var(--success-color));
+}
+
+.btn.copy {
+  background: linear-gradient(135deg, #9b59b6, #8e44ad);
+  color: white;
+  width: auto;
+  margin-left: 8px;
+  padding: 6px 10px;
+  font-size: 10px;
+}
+
+.btn.copy:hover {
+  background: linear-gradient(135deg, #a966c2, #9b59b6);
+}
+
+.btn-icon {
+  font-size: 12px;
+}
+
+.status {
+  padding: 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.status.waiting {
+  background: #f8f9fa;
+  color: #6c757d;
+  border: 1px solid #e9ecef;
+}
+
+.status.success {
+  background: #d5f4e6;
+  color: #27ae60;
+  border: 1px solid #27ae60;
+}
+
+.status.error {
+  background: #fdeaea;
+  color: #e74c3c;
+  border: 1px solid #e74c3c;
+}
+
+.status.processing {
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeaa7;
+}
+
+.result-container {
+  background: #f8f9fa;
+  border: 1px solid #27ae60;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.code-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.code-text {
+  flex: 1;
+  background: white;
+  padding: 8px;
+  border: 1px dashed #27ae60;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  font-weight: bold;
+  color: #27ae60;
+  text-align: center;
+}
+
+.result-info {
+  font-size: 9px;
+  color: #7f8c8d;
+  text-align: center;
+}
+
+.no-result {
+  text-align: center;
+  color: #95a5a6;
+  font-style: italic;
+  padding: 20px 15px;
+  background: #f8f9fa;
+  background: var(--waiting-bg);
+  border-radius: 6px;
+  border: 1px dashed #dee2e6;
+  border: 1px dashed var(--light-gray-border);
+}
+
+.no-result-icon {
+  font-size: 24px;
+  margin-bottom: 6px;
+  opacity: 0.6;
+}
+
+.footer {
+  text-align: center;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px 8px 0 0;
+  margin-top: 6px;
+}
+
+.version {
+  font-size: 9px;
+  color: #7f8c8d;
+  color: var(--secondary-color);
+}

@@ -1,0 +1,53 @@
+<!-- popup.html - Compact Version -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h3>🎁 Lấy Mã KM</h3>
+      <div class="subtitle">Tự động click và lấy mã</div>
+    </div>
+    
+    <div class="section">
+      <button id="clickBtn" class="btn primary">
+        <span class="btn-icon">🖱️</span>
+        Click LẤY MÃ
+      </button>
+      <div id="clickStatus" class="status waiting">Sẵn sàng</div>
+    </div>
+
+    <div class="section">
+      <button id="getCodeBtn" class="btn success">
+        <span class="btn-icon">✨</span>
+        Lấy Mã KM
+      </button>
+      <div id="codeStatus" class="status waiting">Chưa lấy mã</div>
+    </div>
+
+    <div class="section result-section">
+      <h4>Mã Khuyến Mãi</h4>
+      <div id="resultContainer" class="result-container" style="display: none;">
+        <div class="code-display">
+          <span id="codeValue" class="code-text">...</span>
+          <button id="copyCodeBtn" class="btn copy">📋</button>
+        </div>
+        <div id="resultInfo" class="result-info"></div>
+      </div>
+      
+      <div id="noResult" class="no-result">
+        <div class="no-result-icon">📭</div>
+        Chưa có mã
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="version">v1.0</div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
